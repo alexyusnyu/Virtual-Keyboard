@@ -64,5 +64,6 @@
 
 .keyboard__key--active::after {
     background: darkgreen;
-
 }
+.keyboard__key--dark {
+    background: #010301;
