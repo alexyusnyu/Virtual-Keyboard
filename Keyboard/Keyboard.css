@@ -34,5 +34,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
+    vertical-align: top;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+}
+.keyboard__key:active {
+    background: #091d09;
 }
