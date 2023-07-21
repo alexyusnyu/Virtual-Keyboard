@@ -24,6 +24,11 @@ const Keyboard = {
 
         this.elements.main.classList.add("keyboard", "1keyboard--hidden");
         this.elements.keysContainer.classList.add("keyboard__keys");
+        this.elements.keysContainer.appendChild(this._createKeys());
+
+        this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
+
+
 
         // Add to Dom
         this.elements.main.appendChild(this.elements.keysContainer);
@@ -140,7 +145,16 @@ const Keyboard = {
     },
 
     _toggleCapsLock() {
-        console.log("Caps Lock Toggled!");
+        this.properties.capslock = !this.properties.capslock;
+        for (const key of this.elements.keys) {
+            if (key.childElementCount === 0) {
+                key.textContent = this.properties.capslock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+
+            }
+
+        }
+
+
     },
 
     open(initialValue, oninput, onclose) {
