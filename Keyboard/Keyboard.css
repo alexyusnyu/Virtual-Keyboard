@@ -51,3 +51,18 @@
     width: 32%;
     max-width: 500px;
 }
+.keyboard__key--activatable::after {
+    content: '';
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: aqua;
+    border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+    background: darkgreen;
+
+}
