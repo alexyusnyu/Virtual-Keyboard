@@ -1,19 +1,4 @@
 const Keyboard = {
-    elements: {
-        main: null,
-        keysContainer: null,
-        keys: []
-    },
-
-    eventHandlers: {
-        oninput: null,
-        onclose: null
-    },
-
-    properties: {
-        value: "",
-        capsLock: false
-    },
 
     init() {
         // Create main elements
@@ -39,6 +24,17 @@ const Keyboard = {
                 });
             });
         });
+    },
+
+    elements: {
+        main: null,
+        keysContainer: null,
+        keys: []
+    },
+
+    eventHandling: {
+        oninput: null,
+        onclose: null
     },
 
     _createKeys() {
@@ -142,8 +138,8 @@ const Keyboard = {
     },
 
     _triggerEvent(handlerName) {
-        if (typeof this.eventHandlers[handlerName] == "function") {
-            this.eventHandlers[handlerName](this.properties.value);
+        if (typeof this.eventHandling[handlerName] == "function") {
+            this.eventHandling[handlerName](this.properties.value);
         }
     },
 
@@ -157,17 +153,22 @@ const Keyboard = {
         }
     },
 
+    properties: {
+        value: "",
+        capsLock: false
+    },
+
     open(initialValue, oninput, onclose) {
         this.properties.value = initialValue || "";
-        this.eventHandlers.oninput = oninput;
-        this.eventHandlers.onclose = onclose;
+        this.eventHandling.oninput = oninput;
+        this.eventHandling.onclose = onclose;
         this.elements.main.classList.remove("keyboard--hidden");
     },
 
     close() {
         this.properties.value = "";
-        this.eventHandlers.oninput = oninput;
-        this.eventHandlers.onclose = onclose;
+        this.eventHandling.oninput = oninput;
+        this.eventHandling.onclose = onclose;
         this.elements.main.classList.add("keyboard--hidden");
     }
 };
